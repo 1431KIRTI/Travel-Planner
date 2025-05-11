@@ -41,7 +41,6 @@ bool caseInsensitiveCompare(const string& a, const string& b) {
     return lowerA == lowerB;
 }
 
-// Function to display food places near a location, with distance and cost estimates
 void TravelPlanner::displayFoodPlacesNearLocation(const string& location) {
     map<string, vector<pair<string, double>>> foodPlaces = {
         {"kakadeo", {{"Kakadeo Restaurant", 5.0}, {"Biryani Mahal", 7.0}, {"Momo Gali", 4.0}, {"Jai Mata Di Dhaba", 6.0}}},
@@ -55,7 +54,6 @@ void TravelPlanner::displayFoodPlacesNearLocation(const string& location) {
         {"nana rao park", {{"Nana Rao Park Cafe", 3.5}, {"Baba's Restaurant", 6.0}, {"Park View Dhaba", 5.0}}}
     };
 
-    // Convert input location to lowercase
     string input = location;
     transform(input.begin(), input.end(), input.begin(), ::tolower);
 
@@ -96,12 +94,11 @@ string TravelPlanner::suggestTransportMode(double distance) {
 
 // Function to calculate the estimated travel time in minutes
 double TravelPlanner::calculateTravelTime(double distance) {
-    double avgSpeed = 40.0; // Assuming average speed of 40 km/h
-    return (distance / avgSpeed) * 60.0; // Convert hours to minutes
+    double avgSpeed = 40.0; 
+    return (distance / avgSpeed) * 60.0; 
 }
 
 void TravelPlanner::shortestPath(string src, string dst) {
-    // Case insensitive input validation
     auto srcIt = find_if(locations.begin(), locations.end(), [&src](const string& loc) {
         return caseInsensitiveCompare(loc, src);
     });
@@ -151,7 +148,6 @@ void TravelPlanner::shortestPath(string src, string dst) {
     cout << "Estimated travel time: " << travelTime << " minutes\n";
     cout << "Suggested transport mode: " << transportMode << "\n";
 
-    // Display food places near source and destination
     displayFoodPlacesNearLocation(src);
     displayFoodPlacesNearLocation(dst);
 }
